@@ -7,14 +7,14 @@ export const registerUser = async (req,res) => {
     try{
         const {name, email, password} = req.body;
         if(!(name && email && password)){
-            return res.staus(401).json({
+            return res.status(401).json({
                 msg: "All fields are required"
             })
         }
 
         const existingUser = await User.findOne({email: email});
         if(existingUser){
-            return res.stauts(400).json({
+            return res.status(400).json({
                 msg: "User already exists"
             })
         }
