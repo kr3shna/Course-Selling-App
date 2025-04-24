@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./database/db.js";
+import userRouter from "./routes/user.routes.js";
 
 
 dotenv.config({path:"../.env"});
@@ -12,9 +13,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 
-app.get("/user",(req,res) => {
-    res.send("hello");
-})
+app.use("/api/v1/user",userRouter);
 
 
 
